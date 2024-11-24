@@ -1,0 +1,33 @@
+{
+    "browser": "CHROME",
+    "browser_version": "latest",
+    "platform": "Windows 10",
+    "headless": false,
+    "selenium_grid": {
+      "enabled": false,
+      "url": "https://username:accesskey@ondemand.saucelabs.com:443/wd/hub"
+    },
+    "capabilities": {
+      "acceptSslCerts": true,
+      "pageLoadStrategy": "normal",
+      "caps" : {
+      },
+      "mobileEmulation": {
+        "enable": false,
+        "deviceName":"Pixel 2",
+        "deviceMetrics": {
+          "width": 360,
+          "height": 640,
+          "pixelRatio": 3.0
+        },
+        "userAgent":"Mozilla/5.0 (Linux; Android 10; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.93 Mobile Safari/537.36"
+      },
+      "sauceOptions": {
+        "username": "your-username",
+        "accessKey": "your-accesskey",
+        "name": "Selenium Test",
+        "build": "Build-1",
+        "tags": ["example", "selenium", "source-labs"]
+      }
+    }
+}
