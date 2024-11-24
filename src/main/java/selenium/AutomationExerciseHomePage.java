@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class AutomationExercisePage {
+public class AutomationExerciseHomePage {
 
-private WebDriver driver;
+    private WebDriver driver;
 
-    public AutomationExercisePage(WebDriver _driver) {
+    public AutomationExerciseHomePage(WebDriver _driver) {
         driver = _driver;
         PageFactory.initElements(driver, this);
     }
@@ -25,7 +25,6 @@ private WebDriver driver;
     }
 
     //Localizadores
-
     @FindBy(how = How.CSS, using = "[href='/login']" )
     WebElement signUp;
 
