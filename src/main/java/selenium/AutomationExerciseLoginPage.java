@@ -17,22 +17,54 @@ public class AutomationExerciseLoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void setSignUsername(String username) {
-        LOGGER.info("Set user name");
-        userText.sendKeys(username);
+    /**
+     *
+     * @return true if login form is displayed.
+     */
+    public boolean verifyLoginForm() {
+        LOGGER.info("Form is displayed.");
+        return formTitleLabel.isDisplayed();
     }
 
+    /**
+     * Set username
+     * @param emailAddress
+     */
+    public void setSignUsername(String emailAddress) {
+        LOGGER.info("Set username");
+        userText.sendKeys(emailAddress);
+    }
+
+    /**
+     * Set user password
+     * @param password
+     */
     public void setSignPassword(String password) {
         LOGGER.info("Set password");
         passwordText.sendKeys(password);
     }
 
+    /**
+     * Click on login button
+     */
     public void signlogin() {
         LOGGER.info("Click to login Button");
         loginButton.submit();
     }
 
+    /**
+     * Gets the error message from an incorrect login attempt.
+     * @return
+     */
+    public String getErrorMessage() {
+        LOGGER.info("Get message error.");
+        return loginErrorLabel.getText();
+    }
+
     //Localizadores
+    @FindBy(how = How.CSS, using = "[action='/login'] [name='email']")
+    WebElement formTitleLabel;
+
     @FindBy(how = How.CSS, using = "[action='/login'] [name='email']")
     WebElement userText;
 
@@ -41,4 +73,7 @@ public class AutomationExerciseLoginPage {
 
     @FindBy(how = How.CSS, using = "[data-qa='login-button']" )
     WebElement loginButton;
+
+    @FindBy(how = How.CSS, using = "[name='password'] + p" )
+    WebElement loginErrorLabel;
 }

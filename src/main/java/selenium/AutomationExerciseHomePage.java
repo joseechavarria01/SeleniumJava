@@ -15,13 +15,26 @@ public class AutomationExerciseHomePage {
         PageFactory.initElements(driver, this);
     }
 
-
+    /**
+     *
+     * @return true if slider carousel is displayed
+     */
     public boolean verifyPage() {
         return sliderCarousel.isDisplayed();
     }
 
+    /**
+     * Click on Signup / Login link navigate to login page
+     */
     public void goToLogin() {
         signUp.click();
+    }
+
+    /**
+     * Click on Products link navigate to Product Page
+     */
+    public void goToProducts() {
+        products.click();
     }
 
     //Localizadores
@@ -30,4 +43,7 @@ public class AutomationExerciseHomePage {
 
     @FindBy(how = How.CSS, using = "[id='slider-carousel'] [class='carousel-inner']" )
     WebElement sliderCarousel;
+
+    @FindBy(how = How.CSS, using = "[href='/products']" )
+    WebElement products;
 }

@@ -3,9 +3,11 @@
  */
 package utils.logger;
 
+import com.aventstack.extentreports.ExtentReports;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.RunUtil;
+import utils.config.Config;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
