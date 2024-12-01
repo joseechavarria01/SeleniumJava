@@ -68,11 +68,10 @@ public class baseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void close(ITestResult result, ITestContext testContext) {
+    public void close(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
             String path = "screenshots";
             String fileName = result.getName() + ".png";
-            testContext.getFailedTests();
             TakeScreenshotHelper.takeScreenshot(driver, path, fileName);
             test.fail("Test failed at step: " + result.getName()).addScreenCaptureFromPath(path + "/" + fileName);
             test.fail(result.getThrowable());
@@ -83,12 +82,7 @@ public class baseTest {
         if(driver != null) {
             driver.close();
         }
-
         extent.flush();
-    }
-
-    @AfterSuite
-    public void tearDown() {
     }
 
 }
