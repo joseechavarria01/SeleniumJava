@@ -7,13 +7,23 @@ public class SeleniumGridDTO {
     private String url;
 
     @JsonProperty("enabled")
-    public boolean getEnabled() { return enabled; }
+    public boolean getEnabled() {
+        return enabled;
+    }
+
     @JsonProperty("enabled")
-    public void setEnabled(boolean value) { this.enabled = value; }
+    public void setEnabled(boolean value) {
+        this.enabled = value;
+    }
 
     @JsonProperty("url")
-    public String getURL() { return url; }
+    public String getURL() {
+        return url;
+    }
+
     @JsonProperty("url")
-    public void setURL(String value) { this.url = value; }
+    public void setURL(String value) {
+        this.url = value;
+    }
 }
 

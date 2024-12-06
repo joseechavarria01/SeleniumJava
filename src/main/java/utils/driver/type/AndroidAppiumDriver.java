@@ -3,24 +3,9 @@
  */
 package utils.driver.type;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
-import utils.Appium.AppiumServer;
-import utils.Result;
-import utils.driver.DriverWrapper;
-import utils.driver.IDriverWrapper;
-import utils.logger.LogController;
-
-import java.io.IOException;
-import java.lang.invoke.MethodHandles;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Map;
-
-
-public class AndroidAppiumDriver implements IDriverWrapper {
-	protected static final LogController LOGGER =  new LogController(MethodHandles.lookup().lookupClass());
+/*
+public class AndroidAppiumDrive  {
+protected static final LogController LOGGER =  new LogController(MethodHandles.lookup().lookupClass());
 	private AppiumDriver driver = null;
 	private static AndroidAppiumDriver instance;
 	private final AppiumServer appiumServer = new AppiumServer();
@@ -58,10 +43,10 @@ public class AndroidAppiumDriver implements IDriverWrapper {
 /*
 		for (Map.Entry<String, String> entry : env.getCaps().entrySet()) {
 			options.setCapability(entry.getKey(), entry.getValue());
-		}*/
+		}
 		return options;
 	}
-
+/*
 	@Override
 	public AppiumDriver getDriver() {
 		return driver;
@@ -82,3 +67,4 @@ public class AndroidAppiumDriver implements IDriverWrapper {
     }
 
 }
+*/

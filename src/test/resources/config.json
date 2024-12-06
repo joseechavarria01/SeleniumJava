@@ -1,5 +1,5 @@
 {
-    "browser": "CHROME",
+    "browser": "firefox",
     "browser_version": "latest",
     "platform": "Windows 10",
     "headless": false,

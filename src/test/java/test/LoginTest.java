@@ -3,9 +3,9 @@ package test;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import selenium.AutomationExerciseUserHomePage;
-import selenium.AutomationExerciseHomePage;
-import selenium.AutomationExerciseLoginPage;
+import Pages.AutomationExerciseUserHomePage;
+import Pages.AutomationExerciseHomePage;
+import Pages.AutomationExerciseLoginPage;
 
 public class LoginTest extends baseTest {
 

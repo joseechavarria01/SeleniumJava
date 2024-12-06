@@ -2,8 +2,8 @@ package test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import selenium.AutomationExerciseHomePage;
-import selenium.AutomationExerciseProductPage;
+import Pages.AutomationExerciseHomePage;
+import Pages.AutomationExerciseProductPage;
 
 public class ProductTest extends baseTest {
 

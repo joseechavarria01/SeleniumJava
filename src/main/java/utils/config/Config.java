@@ -1,6 +1,7 @@
 package utils.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import utils.TestConstant;
 import utils.driver.DTO.SeleniumConfig;
 
 import java.io.IOException;
@@ -21,11 +22,11 @@ public class Config {
         return instance;
     }
 
-    public SeleniumConfig getConfig(String configFile) {
+    public SeleniumConfig getConfig() {
         // Cargar el archivo JSON desde resources
         ClassLoader classLoader = Config.class.getClassLoader();
 
-        try (InputStream inputStream = classLoader.getResourceAsStream(configFile)) {
+        try (InputStream inputStream = classLoader.getResourceAsStream(TestConstant.SELENIUM_CONFIG)) {
             if (inputStream == null) {
                 throw new IllegalArgumentException("Archivo JSON no encontrado en resources");
             }
@@ -38,10 +39,4 @@ public class Config {
         return driverDTO;
     }
 
-    public SeleniumConfig getConfig() {
-        if(driverDTO == null) {
-            throw new IllegalArgumentException("No se Iniciado la configuracion del driver");
-        }
-        return driverDTO;
-    }
 }

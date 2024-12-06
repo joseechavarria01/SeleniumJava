@@ -1,60 +1,42 @@
 package test;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import helper.TakeScreenshotHelper;
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import utils.TestReports;
 import utils.config.Config;
-import utils.driver.DTO.SeleniumConfig;
 import utils.driver.DriverFactory;
-import utils.driver.DriverWrapper;
 import utils.logger.LogController;
 
 import java.lang.reflect.Method;
 
 public class baseTest {
 
-
     protected String baseUrl = "https://automationexercise.com/";
-    protected SeleniumConfig seleniumConfig = Config.getInstance().getConfig("config.json");
-    protected DriverWrapper driverWrapper;
     protected LogController LOGGER = new LogController(baseTest.class);
-    protected static ExtentReports extent;
-    protected ExtentTest test;
+    protected TestReports reports = null;
     protected WebDriver driver;
 
     @BeforeSuite
     public void setUp() {
         // Inicialización del reporte HTML
-        ExtentSparkReporter htmlReporter = new ExtentSparkReporter("extentReport.html");
-        extent = new ExtentReports();
-        extent.attachReporter(htmlReporter);
+        reports = TestReports.getInstance();
     }
 
     @BeforeMethod
     public void setUp(Method method) {
         // Código para inicializar recursos necesarios para los logs
+        Config.getInstance().getConfig();
         String runId = String.format("%s:%s", method.getName(), System.currentTimeMillis());
         LOGGER.info(String.format("Setting runId to %s", runId));
         System.setProperty("runId", runId);
-        LOGGER.info("Se registra y obtine el driverWrapper desde DriverFactory");
-        driverWrapper = DriverFactory.getInstance()
-                .registerDriver(seleniumConfig.getBrowser())
-                .getValue(); // Obtiene el wrapper del drive
-
-        LOGGER.info("Se Inicializa el driver");
-        driverWrapper.createDriver();
-        test = extent.createTest(method.getName());
+        reports.configReport(method.getName());
 
         this.writeLogs("1. Launch browser");
-        driver = (WebDriver) driverWrapper.getDriver();
+        driver = DriverFactory.getInstance().CreateDriver();
         driver.manage().window().maximize();
     }
 
@@ -64,7 +46,7 @@ public class baseTest {
 
     public void writeLogs(String log) {
         LOGGER.info(log);
-        test.info(log);
+        reports.infoStep(log);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -73,16 +55,16 @@ public class baseTest {
             String path = "screenshots";
             String fileName = result.getName() + ".png";
             TakeScreenshotHelper.takeScreenshot(driver, path, fileName);
-            test.fail("Test failed at step: " + result.getName()).addScreenCaptureFromPath(path + "/" + fileName);
-            test.fail(result.getThrowable());
+            reports.failStepAddScreenCapture("Test failed at step: " + result.getName(),path + "/" + fileName);
+            reports.failStep(result.getThrowable().toString());
         } else {
-            test.pass("The test " +result.getName() + " is successful");
+            reports.passStep("The test " +result.getName() + " is successful");
         }
 
         if(driver != null) {
             driver.close();
         }
-        extent.flush();
+        reports.flush();
     }
 
 }
