@@ -10,6 +10,7 @@
     "capabilities": {
       "acceptSslCerts": true,
       "pageLoadStrategy": "normal",
+      "arguments": [],
       "caps" : {
       },
       "mobileEmulation": {
@@ -29,5 +30,13 @@
         "build": "Build-1",
         "tags": ["example", "selenium", "source-labs"]
       }
+    },
+    "screenshots": {
+      "path": "screenshots",
+      "enabled": true
+    },
+  "logs": {
+      "path": "logs",
+      "enabled": true
     }
 }

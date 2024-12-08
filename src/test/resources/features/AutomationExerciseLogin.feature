@@ -13,5 +13,5 @@ Feature: Login con usuario y contraseña correctos
 
         Examples:
             | url                    | email                             | password             |
-            | https://automationexercise.com    | xavomawusse-1109@yopmail.com      | AJghEJY2g3S5Ay       |
-            | https://automationexercise.com    | xavomawusse-1109@yopmail.com      | AJghEJY2g3S5Ay       |
+            | https://automationexercise.com    | xavomawusse-1109@yopmail.com      | QngT0heiO99MGh       |
+            | https://automationexercise.com    | xavomawusse-1109@yopmail.com      | QngT0heiO99MGh       |

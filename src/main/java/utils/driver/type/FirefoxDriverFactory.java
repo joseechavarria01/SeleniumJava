@@ -10,31 +10,29 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.NoSuchDriverException;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import utils.config.Config;
 import utils.driver.DTO.SeleniumConfig;
 import utils.driver.IDriverFactory;
-import utils.logger.LogController;
 
-import java.lang.invoke.MethodHandles;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 
 public class FirefoxDriverFactory implements IDriverFactory {
 
     private static FirefoxDriverFactory instance;
-    private SeleniumConfig settings;
+    private SeleniumConfig settings = Config.getInstance().getConfig();
     protected WebDriver driver = null;
 
-    private FirefoxDriverFactory(SeleniumConfig settings) {
-        this.settings = settings;
+    private FirefoxDriverFactory() {
+
     }
 
-    public static FirefoxDriverFactory getInstanceFirefox(SeleniumConfig settings) {
+    public static FirefoxDriverFactory getInstanceFirefox() {
         if (instance == null) {
             synchronized (FirefoxDriverFactory.class) {
                 if (instance == null) {
-                    instance = new FirefoxDriverFactory(settings);
+                    instance = new FirefoxDriverFactory();
                 }
             }
         }
@@ -42,7 +40,7 @@ public class FirefoxDriverFactory implements IDriverFactory {
     }
 
     @Override
-    public WebDriver driverCreate() {
+    public WebDriver createDriver() {
         if (settings.getSeleniumGrid().getEnabled()) {
             try {
                 return  driver = new RemoteWebDriver(new URL(settings.getSeleniumGrid().getURL()), this.setCapabilities());

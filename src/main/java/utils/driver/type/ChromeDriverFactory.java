@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.NoSuchDriverException;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import utils.config.Config;
 import utils.driver.DTO.SeleniumConfig;
 import utils.driver.IDriverFactory;
 
@@ -18,19 +19,18 @@ import java.util.Map;
 
 public class ChromeDriverFactory implements IDriverFactory {
 
-    private WebDriver driver = null;
+    private WebDriver driver;
     private static volatile ChromeDriverFactory instance = null;
-    private SeleniumConfig settings;
+    private SeleniumConfig settings = Config.getInstance().getConfig();
 
-    private ChromeDriverFactory(SeleniumConfig settings) {
-        this.settings = settings;
+    private ChromeDriverFactory() {
     }
 
-    public static ChromeDriverFactory getInstanceChrome(SeleniumConfig settings) {
+    public static ChromeDriverFactory getInstanceChrome() {
         if (instance == null) {
             synchronized (ChromeDriverFactory.class) {
                 if (instance == null) {
-                    instance = new ChromeDriverFactory(settings);
+                    instance = new ChromeDriverFactory();
                 }
             }
         }
@@ -69,7 +69,7 @@ public class ChromeDriverFactory implements IDriverFactory {
     }
 
     @Override
-    public WebDriver driverCreate() {
+    public WebDriver createDriver() {
 
         if (settings.getSeleniumGrid().getEnabled()) {
             try {

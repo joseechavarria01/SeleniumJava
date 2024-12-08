@@ -15,11 +15,11 @@ public class MobileEmulationDTO {
 	public void setDeviceName(String value) {
 		this.deviceName = value;
 	}
-
 	@JsonProperty("deviceName")
 	public String getDeviceName() {
 		return deviceName;
 	}
+
 	@JsonProperty("width")
 	public int getWidth() {
 		return width;
@@ -28,6 +28,7 @@ public class MobileEmulationDTO {
 	public void setWidth(int width) {
 		this.width = width;
 	}
+
 	@JsonProperty("height")
 	public int getHeight() {
 		return height;

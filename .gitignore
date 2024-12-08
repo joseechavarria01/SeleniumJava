@@ -1,1 +1,6 @@
 /.idea/
+/logs/
+/screenshots/
+/target/
+/extentReport.html
+/reports/

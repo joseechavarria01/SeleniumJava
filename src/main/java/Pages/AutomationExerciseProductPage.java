@@ -5,13 +5,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import utils.TestConstant;
 
 public class AutomationExerciseProductPage {
     private WebDriver driver;
 
     public AutomationExerciseProductPage(WebDriver _driver) {
         driver = _driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, TestConstant.TIMEOUT_IN_SECOND), this);
     }
 
     /**

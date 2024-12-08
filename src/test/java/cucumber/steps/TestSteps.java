@@ -22,56 +22,53 @@ public class TestSteps {
 
     public TestSteps() {
         this.testContext = TestContextSingleton.getInstance();
-    }
-
-    @Given("el sitio web está accesible en la URL {string}")
-    public void goToUrl(String url) {
-
         driver = testContext.getDriver();
         indexPage = new AutomationExerciseHomePage(driver);
         loginPage = new AutomationExerciseLoginPage(driver);
         homePage = new AutomationExerciseUserHomePage(driver);
+    }
 
+    @Given("el sitio web está accesible en la URL {string}")
+    public void goToUrl(String url) {
+        testContext.report().infoStep(String.format("2. Navigate to %s", url));
         driver.navigate().to(url);
     }
 
     @Then("verificar que la página de inicio \\(home) se visualice correctamente con los elementos esperados")
     public void verifySignupLogin() {
-      //  this.writeLogs("3. Verify that home page is visible successfully.");
+        testContext.report().infoStep("3. Verify that home page is visible successfully.");
         Assert.assertTrue(indexPage.verifyPage(),"Page is not available.");
     }
 
     @When("hacer clic en el botón 'Signup Login'")
     public void goToLoginForm() {
-       // this.writeLogs("4. Click on 'Signup / Login' button.");
+        testContext.report().infoStep("4. Click on 'Signup / Login' button.");
         indexPage.goToLogin();
     }
 
     @Then("verificar que el texto 'Login to your account' sea visible")
     public void validatesLoginAccountIsDisplayed() {
-   //     this.writeLogs("5. Verify 'Login to your account' is visible.");
+        testContext.report().infoStep("5. Verify 'Login to your account' is visible.");
         Assert.assertTrue(loginPage.verifyLoginForm(), "Login page is not displayed.");
     }
 
     @When("ingresar el correo electrónico {string} y la contraseña {string}")
     public void setUserAndPassword(String email, String password) {
-   //     this.writeLogs("6. Enter correct email address and password.");
+        testContext.report().infoStep("6. Enter correct email address and password.");
         loginPage.setSignUsername(email);
         loginPage.setSignPassword(password);
     }
 
     @And("hacer clic en el botón 'login'")
     public void clickLoginButton() {
-   //     this.writeLogs("7. Click 'login' button.");
+        testContext.report().infoStep("7. Click 'login' button.");
         loginPage.signlogin();
     }
 
     @Then("verificar que el nombre de usuario se muestre correctamente en la página principal")
     public void validatesUserIsLoggedIn() {
- //       this.writeLogs("8. Verify that 'Logged in as username' is visible");
+        testContext.report().infoStep("8. Verify that 'Logged in as username' is visible");
         Assert.assertTrue(homePage.verifyUsername(), "Home page is not displayed.");
-        driver.quit();
- //       extent.flush();
     }
 }
 

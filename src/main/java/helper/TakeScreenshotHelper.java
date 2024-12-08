@@ -2,15 +2,15 @@ package helper;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import utils.driver.DriverService;
 
 public class TakeScreenshotHelper {
 
-    public static void takeScreenshot(WebDriver driver, String path, String name) {
-        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+    public static void takeScreenshot(String path, String name) {
+        TakesScreenshot takesScreenshot = (TakesScreenshot) DriverService.getInstance().getDriver();
         if(!FileHelper.fileExists(path)) {
             FileHelper.createDir(path);
         }
-        FileHelper.createFile(takesScreenshot.getScreenshotAs(OutputType.FILE), path, name);
+        FileHelper.createFile(takesScreenshot.getScreenshotAs(OutputType.FILE), path, String.format("%s.png",name));
     }
 }

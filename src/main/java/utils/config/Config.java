@@ -3,6 +3,7 @@ package utils.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import utils.TestConstant;
 import utils.driver.DTO.SeleniumConfig;
+import utils.logger.LogController;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,7 @@ import java.io.InputStream;
 public class Config {
     private SeleniumConfig driverDTO;
     private static volatile Config instance = null;
+    protected LogController LOGGER = new LogController(Config.class);
 
     public static Config getInstance() {
         if (instance == null) {
@@ -39,4 +41,9 @@ public class Config {
         return driverDTO;
     }
 
+    public void sepRunId(String methodName) {
+        String runId = String.format("%s:%s", methodName, System.currentTimeMillis());
+        LOGGER.info(String.format("Setting runId to %s", runId));
+        System.setProperty("runId", runId);
+    }
 }

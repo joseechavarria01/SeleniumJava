@@ -10,29 +10,29 @@ import utils.logger.LogController;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DriverFactory {
+public class DriverFactory implements IDriverFactory {
     private LogController LOGGER = new LogController(DriverFactory.class);
     private static DriverFactory instance = null;
     private Map<String, IDriverFactory> driverFactories;
-    private SeleniumConfig settings;
+    private SeleniumConfig settings = Config.getInstance().getConfig();
 
-    private DriverFactory(SeleniumConfig settings) {
-        this.settings = settings;
+    private DriverFactory() {
         driverFactories = new HashMap<>();
-        driverFactories.put("CHROME", ChromeDriverFactory.getInstanceChrome(settings));
-        driverFactories.put("FIREFOX", FirefoxDriverFactory.getInstanceFirefox(settings));
+        driverFactories.put("CHROME", ChromeDriverFactory.getInstanceChrome());
+        driverFactories.put("FIREFOX", FirefoxDriverFactory.getInstanceFirefox());
     }
 
     public static DriverFactory getInstance() {
         synchronized (DriverFactory.class) {
             if (instance == null) {
-                instance = new DriverFactory(Config.getInstance().getConfig());
+                instance = new DriverFactory();
             }
         }
         return instance;
     }
 
-    public WebDriver CreateDriver()
+    @Override
+    public WebDriver createDriver()
     {
         String driverType = settings.getBrowser().toUpperCase();
         if (!driverFactories.containsKey(driverType))
@@ -40,6 +40,6 @@ public class DriverFactory {
             throw new UnsupportedOperationException(String.format("El navegador '%s' no está soportado.",settings.getBrowser()));
         }
         LOGGER.info(String.format("Create driver '%s' ",driverFactories.get(driverType).getClass().getName()));
-        return driverFactories.get(driverType).driverCreate();
+        return driverFactories.get(driverType).createDriver();
     }
 }

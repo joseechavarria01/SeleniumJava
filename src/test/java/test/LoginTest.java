@@ -15,29 +15,29 @@ public class LoginTest extends baseTest {
         AutomationExerciseLoginPage loginPage = new AutomationExerciseLoginPage(driver);
         AutomationExerciseUserHomePage homePage = new AutomationExerciseUserHomePage(driver);
         String email = "xavomawusse-1109@yopmail.com";
-        String password = "AJghEJY2g3S5Ay";
+        String password = "QngT0heiO99MGh";
 
 
         LOGGER.info(String.format("2. Navigate to url %s", baseUrl));
         navigateTo(baseUrl);
 
-        this.writeLogs("3. Verify that home page is visible successfully");
+        this.reports.infoStep("3. Verify that home page is visible successfully");
         Assert.assertTrue(indexPage.verifyPage(),"Page is not available");
 
-        this.writeLogs("4. Click on 'Signup / Login' button");
+        this.reports.infoStep("4. Click on 'Signup / Login' button");
         indexPage.goToLogin();
 
-        this.writeLogs("5. Verify 'Login to your account' is visible");
+        this.reports.infoStep("5. Verify 'Login to your account' is visible");
         loginPage.verifyLoginForm();
 
-        this.writeLogs("6. Enter correct email address and password");
+        this.reports.infoStep("6. Enter correct email address and password");
         loginPage.setSignUsername(email);
         loginPage.setSignPassword(password);
 
-        this.writeLogs("7. Click 'login' button");
+        this.reports.infoStep("7. Click 'login' button");
         loginPage.signlogin();
 
-        this.writeLogs("8. Verify that 'Logged in as username' is visible");
+        this.reports.infoStep("8. Verify that 'Logged in as username' is visible");
         Assert.assertTrue(homePage.verifyUsername(), "Home page is not displayed.");
     }
 
@@ -47,35 +47,35 @@ public class LoginTest extends baseTest {
         AutomationExerciseLoginPage loginPage = new AutomationExerciseLoginPage(driver);
         AutomationExerciseUserHomePage homePage = new AutomationExerciseUserHomePage(driver);
         String email = "xavomawusse-1109@yopmail.com";
-        String password = "AJghEJY2g3S5Ay";
+        String password = "QngT0heiO99MGh";
 
 
         LOGGER.info(String.format("2. Navigate to url %s.", baseUrl));
         navigateTo(baseUrl);
 
-        this.writeLogs("3. Verify that home page is visible successfully.");
+        this.reports.infoStep("3. Verify that home page is visible successfully.");
         Assert.assertTrue(indexPage.verifyPage(),"Page is not available.");
 
-        this.writeLogs("4. Click on 'Signup / Login' button.");
+        this.reports.infoStep("4. Click on 'Signup / Login' button.");
         indexPage.goToLogin();
 
-        this.writeLogs("5. Verify 'Login to your account' is visible.");
+        this.reports.infoStep("5. Verify 'Login to your account' is visible.");
         Assert.assertTrue(loginPage.verifyLoginForm(), "Login page is not displayed.");
 
-        this.writeLogs("6. Enter correct email address and password.");
+        this.reports.infoStep("6. Enter correct email address and password.");
         loginPage.setSignUsername(email);
         loginPage.setSignPassword(password);
 
-        this.writeLogs("7. Click 'login' button.");
+        this.reports.infoStep("7. Click 'login' button.");
         loginPage.signlogin();
 
-        this.writeLogs("8. Verify that 'Logged in as username' is visible");
+        this.reports.infoStep("8. Verify that 'Logged in as username' is visible");
         Assert.assertTrue(homePage.verifyUsername(), "Home page is not displayed.");
 
-        this.writeLogs("9. Click 'Logout' button.");
+        this.reports.infoStep("9. Click 'Logout' button.");
         homePage.logout();
 
-        this.writeLogs("10. Verify that user is navigated to login page.");
+        this.reports.infoStep("10. Verify that user is navigated to login page.");
         Assert.assertTrue(loginPage.verifyLoginForm(), "Login page is not displayed.");
     }
 
@@ -87,26 +87,26 @@ public class LoginTest extends baseTest {
         String password = "AJghEJY2g3S5Ay";
         String errorMessage = "Your email or password is incorrect!";
 
-        this.writeLogs(String.format("2. Navigate to url %s", baseUrl));
+        this.reports.infoStep(String.format("2. Navigate to url %s", baseUrl));
         navigateTo(baseUrl);
 
-        this.writeLogs("3. Verify that home page is visible successfully");
+        this.reports.infoStep("3. Verify that home page is visible successfully");
         Assert.assertTrue(indexPage.verifyPage(),"Page is not available");
 
-        this.writeLogs("4. Click on 'Signup / Login' button");
+        this.reports.infoStep("4. Click on 'Signup / Login' button");
         indexPage.goToLogin();
 
-        this.writeLogs("5. Verify 'Login to your account' is visible");
+        this.reports.infoStep("5. Verify 'Login to your account' is visible");
         loginPage.verifyLoginForm();
 
-       this.writeLogs("6. Enter incorrect email address and password");
+       this.reports.infoStep("6. Enter incorrect email address and password");
         loginPage.setSignUsername(email);
         loginPage.setSignPassword(password);
 
-       this.writeLogs("7. Click 'login' button");
+       this.reports.infoStep("7. Click 'login' button");
         loginPage.signlogin();
 
-       this.writeLogs(" 8. Verify error 'Your email or password is incorrect!' is visible");
+       this.reports.infoStep(" 8. Verify error 'Your email or password is incorrect!' is visible");
        Assert.assertTrue(errorMessage.equalsIgnoreCase(loginPage.getErrorMessage()));
     }
 }
