@@ -1,3 +1,6 @@
+/**
+ * @author Jose Francisco Echavarria
+ */
 package utils;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -7,11 +10,10 @@ import helper.DriverHelper;
 import helper.TakeScreenshotHelper;
 import utils.config.Config;
 import utils.driver.DTO.ScreenshotsDTO;
-import utils.driver.DriverService;
 import utils.logger.LogController;
 
 public class TestReports {
-    private LogController LOGGER = new LogController(TestReports.class);
+    private final LogController LOGGER = new LogController(TestReports.class);
     private static TestReports instance = null;
     private ScreenshotsDTO screenshots;
     private ExtentReports extent;

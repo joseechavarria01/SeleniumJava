@@ -1,3 +1,6 @@
+/**
+ * @author Jose Francisco Echavarria
+ */
 package utils.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

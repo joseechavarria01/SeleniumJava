@@ -12,7 +12,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class TestSteps {
+public class ExerciseLoginSteps {
 
     private final TestContext testContext;
     AutomationExerciseHomePage indexPage;
@@ -20,7 +20,7 @@ public class TestSteps {
     AutomationExerciseUserHomePage homePage;
     private WebDriver driver;
 
-    public TestSteps() {
+    public ExerciseLoginSteps() {
         this.testContext = TestContextSingleton.getInstance();
         driver = testContext.getDriver();
         indexPage = new AutomationExerciseHomePage(driver);
@@ -30,8 +30,8 @@ public class TestSteps {
 
     @Given("el sitio web está accesible en la URL {string}")
     public void goToUrl(String url) {
-        testContext.report().infoStep(String.format("2. Navigate to %s", url));
         driver.navigate().to(url);
+        testContext.report().infoStep(String.format("2. Navigate to %s", url));
     }
 
     @Then("verificar que la página de inicio \\(home) se visualice correctamente con los elementos esperados")

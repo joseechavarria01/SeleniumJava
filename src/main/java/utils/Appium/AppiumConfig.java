@@ -1,3 +1,6 @@
+/**
+ * @author Jose Francisco Echavarria
+ */
 package utils.Appium;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

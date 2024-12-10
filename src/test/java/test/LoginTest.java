@@ -17,9 +17,8 @@ public class LoginTest extends baseTest {
         String email = "xavomawusse-1109@yopmail.com";
         String password = "QngT0heiO99MGh";
 
-
-        LOGGER.info(String.format("2. Navigate to url %s", baseUrl));
         navigateTo(baseUrl);
+        this.reports.infoStep(String.format("2. Navigate to url %s", baseUrl));
 
         this.reports.infoStep("3. Verify that home page is visible successfully");
         Assert.assertTrue(indexPage.verifyPage(),"Page is not available");

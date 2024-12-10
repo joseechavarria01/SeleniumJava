@@ -1,3 +1,6 @@
+/**
+ * @author Jose Francisco Echavarria
+ */
 package utils.driver.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

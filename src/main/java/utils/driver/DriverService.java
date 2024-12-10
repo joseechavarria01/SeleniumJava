@@ -1,9 +1,10 @@
+/**
+ * @author Jose Francisco Echavarria
+ */
 package utils.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.NoSuchDriverException;
-
-import java.util.Map;
 
 public class DriverService {
 

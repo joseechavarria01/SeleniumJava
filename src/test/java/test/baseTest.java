@@ -1,5 +1,6 @@
 package test;
 
+import helper.DriverHelper;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -13,20 +14,20 @@ import utils.logger.LogController;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class baseTest {
 
     private Config config =  Config.getInstance();
     protected String baseUrl = TestConstant.URL;
     protected LogController LOGGER = new LogController(baseTest.class);
-    protected TestReports reports = null;
+    protected TestReports reports = TestReports.getInstance();;
     protected DriverService driverService = DriverService.getInstance();
     protected WebDriver driver;
 
     @BeforeSuite
     public void setUp() {
         // Inicialización del reporte HTML
-        reports = TestReports.getInstance();
         reports.configReport();
     }
 

@@ -1,3 +1,6 @@
+/**
+ * @author Jose Francisco Echavarria
+ */
 package utils.Appium;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
